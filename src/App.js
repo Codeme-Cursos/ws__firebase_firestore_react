@@ -3,10 +3,12 @@ import { db } from "./firebase";
 
 function App() {
 
+  const collection = 'products'
+
   const [ products, setProducts ] = useState([]);
 
   const getExample = () => {
-    db.collection("products").onSnapshot((querySnapshot) => {
+    db.collection(collection).onSnapshot((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
         docs.push({
@@ -18,20 +20,19 @@ function App() {
     });
   };
   const postExample = async () => {
-    await db.collection('products').doc().set({
+    await db.collection(collection).doc().set({
       name: "caja",
       quantity: 10
     })
   };
   const updateExampleById = async(id) => {
-    await db.collection('products').doc(id).update({
+    await db.collection(collection).doc(id).update({
       name: "caja modificada",
       quantity: 10
     })
   };
-
   const deleteExampleById = async (id) => {
-    await db.collection("products").doc(id).delete()
+    await db.collection(collection).doc(id).delete()
   };
 
   useEffect(() => {
