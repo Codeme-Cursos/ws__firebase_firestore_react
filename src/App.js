@@ -3,7 +3,7 @@ import { db } from "./firebase";
 
 function App() {
 
-  const collection = 'products'
+  const collection = 'products';
 
   const [ products, setProducts ] = useState([]);
 
